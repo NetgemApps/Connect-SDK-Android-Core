@@ -37,7 +37,7 @@ import com.connectsdk.service.sessions.LaunchSession;
 import com.connectsdk.service.sessions.WebOSWebAppSession;
 import com.connectsdk.service.webos.WebOSTVServiceSocketClient;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.json.JSONException;
 import org.json.JSONObject;

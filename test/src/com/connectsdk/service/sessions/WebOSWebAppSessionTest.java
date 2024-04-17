@@ -31,7 +31,7 @@ import com.connectsdk.service.config.ServiceDescription;
 import com.connectsdk.service.config.WebOSTVServiceConfig;
 import com.connectsdk.service.webos.WebOSTVServiceSocketClient;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.json.JSONArray;
 import org.json.JSONException;

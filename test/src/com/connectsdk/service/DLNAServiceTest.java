@@ -7,7 +7,7 @@ import com.connectsdk.service.config.ServiceConfig;
 import com.connectsdk.service.config.ServiceDescription;
 import com.connectsdk.service.upnp.DLNAHttpServer;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.custommonkey.xmlunit.DetailedDiff;
 import org.custommonkey.xmlunit.XMLUnit;

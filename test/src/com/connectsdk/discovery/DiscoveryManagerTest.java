@@ -5,7 +5,7 @@ import com.connectsdk.discovery.provider.ZeroconfDiscoveryProvider;
 import com.connectsdk.service.DIALService;
 import com.connectsdk.service.DLNAService;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
