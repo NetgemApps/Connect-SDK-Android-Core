@@ -1,5 +1,7 @@
 package com.connectsdk.service;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import com.connectsdk.core.SubtitleInfo;
 import com.connectsdk.core.TestUtil;
 import com.connectsdk.discovery.provider.ssdp.Service;
@@ -7,15 +9,13 @@ import com.connectsdk.service.config.ServiceConfig;
 import com.connectsdk.service.config.ServiceDescription;
 import com.connectsdk.service.upnp.DLNAHttpServer;
 
-import org.junit.Assert;
-
 import org.custommonkey.xmlunit.DetailedDiff;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.xml.sax.SAXException;
@@ -42,7 +42,7 @@ public class DLNAServiceTest {
     public void setUp() {
         dlnaServer = Mockito.mock(DLNAHttpServer.class);
         service = new DLNAService(Mockito.mock(ServiceDescription.class),
-                Mockito.mock(ServiceConfig.class), Robolectric.application, dlnaServer);
+                Mockito.mock(ServiceConfig.class), ApplicationProvider.getApplicationContext(), dlnaServer);
     }
 
     @Test
@@ -446,7 +446,7 @@ public class DLNAServiceTest {
 
         ServiceDescription description = Mockito.mock(ServiceDescription.class);
         Mockito.when(description.getServiceList()).thenReturn(services);
-        return new DLNAService(description, Mockito.mock(ServiceConfig.class), Robolectric.application, null);
+        return new DLNAService(description, Mockito.mock(ServiceConfig.class), ApplicationProvider.getApplicationContext(), null);
     }
 
     private void assertXMLEquals(String expectedXML, String actualXML) throws SAXException, IOException {

@@ -8,6 +8,26 @@ import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
+import com.connectsdk.discovery.DiscoveryFilter;
+import com.connectsdk.discovery.DiscoveryManager;
+import com.connectsdk.discovery.DiscoveryProvider;
+import com.connectsdk.discovery.DiscoveryProviderListener;
+import com.connectsdk.service.config.ServiceDescription;
+import com.connectsdk.shadow.WifiInfoShadow;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowLooper;
+
 import java.io.IOException;
 import java.net.InetAddress;
 
@@ -16,24 +36,6 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 import javax.jmdns.impl.JmDNSImpl;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
-
-import android.content.Context;
-
-import com.connectsdk.discovery.DiscoveryFilter;
-import com.connectsdk.discovery.DiscoveryManager;
-import com.connectsdk.discovery.DiscoveryProvider;
-import com.connectsdk.discovery.DiscoveryProviderListener;
-import com.connectsdk.service.config.ServiceDescription;
-import com.connectsdk.shadow.WifiInfoShadow;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = Config.NONE, shadows = { WifiInfoShadow.class })
@@ -78,7 +80,7 @@ public class ZeroConfDiscoveryPrividerTest {
 
     @Before
     public void setUp() {
-        dp = new StubZeroConfDiscoveryProvider(Robolectric.application);
+        dp = new StubZeroConfDiscoveryProvider(ApplicationProvider.getApplicationContext());
         mDNS = mock(StubJmDNS.class);
         eventMock = mock(StubServiceEvent.class);
 
@@ -297,7 +299,7 @@ public class ZeroConfDiscoveryPrividerTest {
 
         // when
         dp.jmdnsListener.serviceRemoved(event);
-        Robolectric.runUiThreadTasksIncludingDelayedTasks();
+        ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
 
         // then
         verify(listener).onServiceRemoved(any(DiscoveryProvider.class), any(ServiceDescription.class));

@@ -19,10 +19,9 @@
  */
 package com.connectsdk.service.airplay;
 
-import org.junit.Assert;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;

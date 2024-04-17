@@ -1,6 +1,12 @@
 package com.connectsdk.discovery.provider;
 
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import com.connectsdk.core.TestUtil;
 import com.connectsdk.discovery.DiscoveryFilter;
@@ -14,9 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
@@ -25,10 +29,6 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.URL;
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest=Config.NONE,shadows={WifiInfoShadow.class})
@@ -57,7 +57,7 @@ public class SSDPDiscoveryProviderTest{
         byte[] data = new byte[1];
         when(ssdpClient.responseReceive()).thenReturn(new DatagramPacket(data, 1));
         when(ssdpClient.multicastReceive()).thenReturn(new DatagramPacket(data, 1));
-        dp = new StubSSDPDiscoveryProvider(Robolectric.application);
+        dp = new StubSSDPDiscoveryProvider(ApplicationProvider.getApplicationContext());
         assertNotNull(dp);
     }
     @After

@@ -1,5 +1,7 @@
 package com.connectsdk.device;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import com.connectsdk.discovery.DiscoveryManager;
 import com.connectsdk.service.AirPlayService;
 import com.connectsdk.service.DIALService;
@@ -14,12 +16,10 @@ import com.connectsdk.service.config.ServiceConfig;
 import com.connectsdk.service.config.ServiceDescription;
 
 import org.junit.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
@@ -35,7 +35,7 @@ public class ConnectableDeviceTest {
 
     @Before
     public void setUp() {
-        DiscoveryManager.init(Robolectric.application);
+        DiscoveryManager.init(ApplicationProvider.getApplicationContext());
         device = new ConnectableDevice();
     }
 

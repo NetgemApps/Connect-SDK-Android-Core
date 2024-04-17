@@ -30,14 +30,13 @@ import com.connectsdk.service.config.ServiceConfig;
 import com.connectsdk.service.config.ServiceDescription;
 
 import org.junit.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowLooper;
 
 import java.io.IOException;
 
@@ -151,7 +150,7 @@ public class DIALServiceSendCommandTest {
 
         service.sendCommand(command);
         TestUtil.runUtilBackgroundTasks();
-        Robolectric.runUiThreadTasksIncludingDelayedTasks();
+        ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
 
         Mockito.verify(listener).onSuccess(Mockito.eq(response));
     }
@@ -167,7 +166,7 @@ public class DIALServiceSendCommandTest {
 
         service.sendCommand(command);
         TestUtil.runUtilBackgroundTasks();
-        Robolectric.runUiThreadTasksIncludingDelayedTasks();
+        ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
 
         Mockito.verify(listener).onSuccess(Mockito.eq(response));
     }
@@ -197,7 +196,7 @@ public class DIALServiceSendCommandTest {
 
         service.sendCommand(command);
         TestUtil.runUtilBackgroundTasks();
-        Robolectric.runUiThreadTasksIncludingDelayedTasks();
+        ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
 
         Mockito.verify(listener).onError(Mockito.any(ServiceCommandError.class));
     }
