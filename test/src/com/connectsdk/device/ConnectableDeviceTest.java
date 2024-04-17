@@ -15,6 +15,7 @@ import com.connectsdk.service.capability.MediaPlayer;
 import com.connectsdk.service.config.ServiceConfig;
 import com.connectsdk.service.config.ServiceDescription;
 
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -135,13 +136,19 @@ public class ConnectableDeviceTest {
         Assert.assertEquals(DeviceService.PairingType.PIN_CODE, device.getServiceByName(AirPlayService.ID).getPairingType());
     }
 
+    private ServiceConfig getMockedServiceConfig() {
+        ServiceConfig config = Mockito.mock(ServiceConfig.class);
+        Mockito.when(config.toJSONObject()).thenReturn(new JSONObject());
+        return config;
+    }
+
     private void addAllCoreServicesToDevice() throws IOException {
-        DeviceService webOSService = new WebOSTVService(createServiceDescription(WebOSTVService.ID), Mockito.mock(ServiceConfig.class));
-        DeviceService netCastService = new NetcastTVService(createServiceDescription(NetcastTVService.ID), Mockito.mock(ServiceConfig.class));
-        DeviceService dialService = new DIALService(createServiceDescription(DIALService.ID), Mockito.mock(ServiceConfig.class));
-        DeviceService dlnaSrevice = new DLNAService(createServiceDescription(DLNAService.ID), Mockito.mock(ServiceConfig.class));
-        DeviceService rokuService = new RokuService(createServiceDescription(RokuService.ID), Mockito.mock(ServiceConfig.class));
-        DeviceService airPlayService = new AirPlayService(createServiceDescription(AirPlayService.ID), Mockito.mock(ServiceConfig.class));
+        DeviceService webOSService = new WebOSTVService(createServiceDescription(WebOSTVService.ID), getMockedServiceConfig());
+        DeviceService netCastService = new NetcastTVService(createServiceDescription(NetcastTVService.ID), getMockedServiceConfig());
+        DeviceService dialService = new DIALService(createServiceDescription(DIALService.ID), getMockedServiceConfig());
+        DeviceService dlnaSrevice = new DLNAService(createServiceDescription(DLNAService.ID), getMockedServiceConfig());
+        DeviceService rokuService = new RokuService(createServiceDescription(RokuService.ID), getMockedServiceConfig());
+        DeviceService airPlayService = new AirPlayService(createServiceDescription(AirPlayService.ID), getMockedServiceConfig());
         device.services.put(WebOSTVService.ID, webOSService);
         device.services.put(NetcastTVService.ID, netCastService);
         device.services.put(DIALService.ID, dialService);
