@@ -239,7 +239,7 @@ public class DiscoveryManager implements ConnectableDeviceListener, DiscoveryPro
 
         discoveryListeners = new CopyOnWriteArrayList<DiscoveryManagerListener>();
 
-        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         multicastLock = wifiMgr.createMulticastLock(Util.T);
         multicastLock.setReferenceCounted(true);
 
