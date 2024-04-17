@@ -6,6 +6,7 @@ package com.connectsdk.service.webos.lgcast.common.utils;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
 
 public class AudioUtil {
     public static int getStreamVolume(Context context) {
@@ -25,16 +26,24 @@ public class AudioUtil {
 
     public static boolean isMute(Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         return am.isStreamMute(AudioManager.STREAM_MUSIC);
+        } else  {
+            return false;
+        }
     }
 
     public static void setMute(Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         if (am.isStreamMute(AudioManager.STREAM_MUSIC) == false) am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+        }
     }
 
     public static void setUnmute(Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         if (am.isStreamMute(AudioManager.STREAM_MUSIC) == true) am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE, 0);
+        }
     }
 }

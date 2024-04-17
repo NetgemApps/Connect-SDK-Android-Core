@@ -9,9 +9,13 @@ import android.accessibilityservice.GestureDescription;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Path;
+import android.os.Build;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+
+import androidx.annotation.RequiresApi;
+
 import com.connectsdk.service.webos.lgcast.common.utils.HandlerThreadEx;
 import com.connectsdk.service.webos.lgcast.common.utils.Logger;
 import com.connectsdk.service.webos.lgcast.screenmirroring.ScreenMirroringConfig;
@@ -204,8 +208,10 @@ public class UibcAccessibilityService extends AccessibilityService {
         PointConverter.POINT p = mPointConverter.convert(x, y); /*p.debug();*/
         if (p.screenX != -1 && p.screenY != -1) mMousePointPath.lineTo(p.screenX, p.screenY);
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
         boolean result = dispatchSwipeEvent(mMousePointPath, duration);
         Logger.debug("Dispatch result = " + result);
+        }
 
         mMousePointPath.reset();
         mIsMouseClicked = false;
@@ -216,6 +222,7 @@ public class UibcAccessibilityService extends AccessibilityService {
         Logger.debug("Dispatch result = " + result);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private boolean dispatchSwipeEvent(Path mPath, long duration) {
         if (duration <= 0) return false;
         GestureDescription.Builder builder = new GestureDescription.Builder();
