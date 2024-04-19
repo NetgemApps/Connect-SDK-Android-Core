@@ -960,7 +960,9 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
 
     @Override
     public void displayImage(final String url, final String mimeType, final String title, final String description, final String iconSrc, final MediaPlayer.LaunchListener listener) {
-        if ("4.0.0".equalsIgnoreCase(this.serviceDescription.getVersion())) {
+        if ("4.0.0".equalsIgnoreCase(this.serviceDescription.getVersion())
+                || "4.0.1".equalsIgnoreCase(this.serviceDescription.getVersion())
+                || "4.1.0".equalsIgnoreCase(this.serviceDescription.getVersion())) {
             DeviceService dlnaService = this.getDLNAService();
 
             if (dlnaService != null) {
@@ -1055,7 +1057,9 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
     @Override
     public void playMedia(MediaInfo mediaInfo, boolean shouldLoop,
                           MediaPlayer.LaunchListener listener) {
-        if ("4.0.0".equalsIgnoreCase(this.serviceDescription.getVersion())) {
+        if ("4.0.0".equalsIgnoreCase(this.serviceDescription.getVersion())
+                || "4.0.1".equalsIgnoreCase(this.serviceDescription.getVersion())
+                || "4.1.0".equalsIgnoreCase(this.serviceDescription.getVersion())) {
             playMediaByNativeApp(mediaInfo, shouldLoop, listener);
         } else {
             playMediaByWebApp(mediaInfo, shouldLoop, listener);
@@ -2448,7 +2452,8 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
         if (serviceDescription != null) {
             if (serviceDescription.getVersion() != null
                     && (serviceDescription.getVersion().contains("4.0.0")
-                    || serviceDescription.getVersion().contains("4.0.1"))) {
+                    || serviceDescription.getVersion().contains("4.0.1")
+                    || serviceDescription.getVersion().contains("4.1.0"))) {
                 capabilities.add(Launch);
                 capabilities.add(Launch_Params);
 
