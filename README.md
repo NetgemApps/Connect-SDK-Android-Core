@@ -16,7 +16,8 @@ Unless you are doing very specialized work to extend the SDK, you should not nee
 
 ## External libraries
 libgstreamer_android.so is shared object library and links dynamically GStreamer open-source multimedia framework that is licensed under Lesser General Public License.
-You can download and rebuild libgstreamer_android.so at [libgstreamer_android.tar](https://github.com/ConnectSDK/Connect-SDK-Android-Core/blob/master/jniLibs/libgstreamer_android.tar)
+You can download and rebuild libgstreamer_android.so at [libgstreamer_android.tar](https://github.com/ConnectSDK/Connect-SDK-Android-Core/blob/master/jniLibs/libgstreamer_android.tar).
+To build a new version of libgstreamer, follow instructions on [GStreamer Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 ## License
 Copyright (c) 2013-2015 LG Electronics.
