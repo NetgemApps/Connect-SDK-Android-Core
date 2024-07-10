@@ -45,8 +45,10 @@ import com.connectsdk.service.capability.MediaPlayer;
 import com.connectsdk.service.capability.MouseControl;
 import com.connectsdk.service.capability.PlaylistControl;
 import com.connectsdk.service.capability.PowerControl;
+/*
 import com.connectsdk.service.capability.RemoteCameraControl;
 import com.connectsdk.service.capability.ScreenMirroringControl;
+*/
 import com.connectsdk.service.capability.TVControl;
 import com.connectsdk.service.capability.TextInputControl;
 import com.connectsdk.service.capability.ToastControl;
@@ -72,9 +74,11 @@ import com.connectsdk.service.webos.WebOSTVMouseSocketConnection;
 import com.connectsdk.service.webos.WebOSTVServiceSocketClient;
 import com.connectsdk.service.webos.WebOSTVServiceSocketClient.WebOSTVServiceSocketClientListener;
 
+/*
 import com.connectsdk.service.webos.lgcast.common.utils.XmlUtil;
 import com.connectsdk.service.webos.lgcast.remotecamera.api.RemoteCameraApi;
 import com.connectsdk.service.webos.lgcast.screenmirroring.api.ScreenMirroringApi;
+*/
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +99,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 @SuppressLint("DefaultLocale")
-public class WebOSTVService extends WebOSTVDeviceService implements Launcher, MediaPlayer, PlaylistControl, VolumeControl, TVControl, ToastControl, ExternalInputControl, MouseControl, KeyControl, TextInputControl, WebAppLauncher, ScreenMirroringControl, RemoteCameraControl {
+public class WebOSTVService extends WebOSTVDeviceService implements Launcher, MediaPlayer, PlaylistControl, VolumeControl, TVControl, ToastControl, ExternalInputControl, MouseControl, KeyControl, TextInputControl, WebAppLauncher {
 
     public static final String ID = "webOS TV";
     private static final String MEDIA_PLAYER_ID = "MediaPlayer";
@@ -2478,6 +2482,7 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
                 capabilities.add(MediaPlayer.Loop);
             }
 
+            /*
             String locationXML = serviceDescription.getLocationXML();
             String appCasting = (locationXML != null) ? XmlUtil.findElement(locationXML, "appCasting") : null;
             String appCastingFeature = (locationXML != null) ? XmlUtil.findElement(locationXML, "supportAppcastingFeatures") : null;
@@ -2490,6 +2495,7 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
                 // <appCasting>support</appCasting>
                 if ("support".equals(appCasting)) capabilities.add(ScreenMirroringControl.ScreenMirroring);
             }
+            */
         }
 
         setCapabilities(capabilities);
@@ -2598,6 +2604,7 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
     /**********************************************************************************************
      * SCREEN MIRRORING
      *********************************************************************************************/
+    /*
     @Override
     public ScreenMirroringControl getScreenMirroringControl() {
         return this;
@@ -2624,11 +2631,13 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
             errorListener.onError(screenMirroringError);
         });
     }
+    */
 
 
     /**********************************************************************************************
      * REMOTE CAMERA
      *********************************************************************************************/
+    /*
     @Override
     public RemoteCameraControl getRemoteCameraControl() {
         return this;
@@ -2668,4 +2677,5 @@ public class WebOSTVService extends WebOSTVDeviceService implements Launcher, Me
     public void setErrorListener(Context context, RemoteCameraErrorListener errorListener) {
         RemoteCameraApi.getInstance().setErrorListener(context, errorListener);
     }
+    */
 }

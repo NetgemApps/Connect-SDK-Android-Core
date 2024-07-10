@@ -48,8 +48,10 @@ import com.connectsdk.service.capability.MediaPlayer;
 import com.connectsdk.service.capability.MouseControl;
 import com.connectsdk.service.capability.PlaylistControl;
 import com.connectsdk.service.capability.PowerControl;
+/*
 import com.connectsdk.service.capability.RemoteCameraControl;
 import com.connectsdk.service.capability.ScreenMirroringControl;
+*/
 import com.connectsdk.service.capability.TVControl;
 import com.connectsdk.service.capability.TextInputControl;
 import com.connectsdk.service.capability.ToastControl;
@@ -636,20 +638,24 @@ public class ConnectableDevice implements DeviceServiceListener {
      * This method is deprecated. Use
      * `ConnectableDevice#getCapability(Class<T> controllerClass)` method instead
      */
+    /*
     @Deprecated
     public ScreenMirroringControl getScreenMirroringControl() {
         return getCapability(ScreenMirroringControl.class);
     }
+    */
 
     /**
      * Accessor for highest priority RemoteCameraControl object
      * This method is deprecated. Use
      * `ConnectableDevice#getCapability(Class<T> controllerClass)` method instead
      */
+    /*
     @Deprecated
     public RemoteCameraControl getRemoteCameraControl() {
         return getCapability(RemoteCameraControl.class);
     }
+    */
 
     /**
      * Get a capability with the highest priority from a device. If device doesn't have such
