@@ -67,7 +67,7 @@ dependencies {
     implementation 'org.java-websocket:Java-WebSocket:1.5.4'
     implementation 'javax.jmdns:jmdns:3.4.1'
     implementation 'androidx.preference:preference:1.2.1'
-    implementation 'com.google.android.gms:play-services-cast:21.4.0'
+    implementation 'com.google.android.gms:play-services-cast:21.5.0'
     implementation 'com.googlecode.plist:dd-plist:1.23'
     implementation 'com.nimbusds:srp6a:2.1.0'
     implementation 'net.i2p.crypto:eddsa:0.3.0'
